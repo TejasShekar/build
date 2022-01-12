@@ -1,0 +1,15 @@
+{
+  "name": "build-logic",
+  "version": "1.0.0",
+  "description": "1. [Operators, Branching, Loops](./001_operators_branching_loops.md)\r 2. [Functions](./002_functions.md)\r 3. [Number](./003_numbers.md)\r 4. [String](./004_strings.md)\r 5. [Arrays](./005_arrays.md)\r 6. [Objects and Object Oriented Programming](./006_objects-oops.md)",
+  "main": "001_operators_branching_loops_solution.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
