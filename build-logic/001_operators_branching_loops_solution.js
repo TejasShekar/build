@@ -14,8 +14,8 @@ number % 2 === 0 ? console.log("It is Odd") : console.log("It is Even");
 // Write a program to find the maximum and minimum out of two given numbers. The numbers are num1=129 and num2=251.
 const minMax = (num1, num2) =>
   num1 > num2
-    ? `Min = ${num2} and Min = ${num1}`
-    : `Min = ${num1} and Min = ${num2}`;
+    ? `Min = ${num2} and Max = ${num1}`
+    : `Min = ${num1} and Max = ${num2}`;
 
 console.log(minMax(129, 251));
 
@@ -31,3 +31,5 @@ const maxNum = (num1, num2, num3) => {
 console.log(maxNum(8, 23, 17));
 
 //Write a program to find the minimum out of three given numbers. The numbers are num1=35, num2=29 and num3=46.
+
+
