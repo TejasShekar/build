@@ -191,7 +191,7 @@ const encodeString = (str, n) => {
     "z",
   ];
   let encodedString = [];
-  str = str.toLowerCase().split("");
+  str.toLowerCase().split("");
   for (let letters of str) {
     let i = 0;
     for (let letter of alphabets) {
@@ -206,13 +206,25 @@ const encodeString = (str, n) => {
   encodedString = encodedString.join("");
   console.log(encodedString);
 };
-
 encodeString("neogcamp", 2);
+
+/* Better solution :
+const encodeString = (s, num) => {
+  let charcode = 0;
+  let result = "";
+  for (let i = 0; i < s.length; i++) {
+    charcode = s[i].charCodeAt() + num;
+    result += String.fromCharCode(charcode);
+  }
+  return result;
+};
+console.log(encodeString("neogcamp", 2));
+*/
 
 /*
 Given a sentence, return a sentence with first letter of all words as capital.  
-   **Example:**  
-   **Input:** `toSentenceCase('we are neoGrammers')` ––> **Output:** `We Are NeoGrammers`
+**Example:**  
+**Input:** `toSentenceCase('we are neoGrammers')` ––> **Output:** `We Are NeoGrammers`
 */
 
 const toSentenceCase = (sentence) => {
@@ -225,8 +237,87 @@ const toSentenceCase = (sentence) => {
 };
 toSentenceCase("we are neoGrammers");
 
+/* Even better solution :
+const toSentenceCase = (str) => str.split(" ").map((item) => item[0].toUpperCase() + item.slice(1));
+console.log(toSentenceCase("we are neoGrammers"));
+*/
+
 /*
 Given an array of numbers, your function should return an array in the ascending order.  
-   **Example:**  
-   **Input:** `sortArray([100,83,32,9,45,61])` ––> **Output:** `[9,32,45,61,83,100]`
+**Example:**  
+**Input:** `sortArray([100,83,32,9,45,61])`
+**Output:** `[9,32,45,61,83,100]`
 */
+
+const sortArray = (arr) => {
+  let i, j;
+  for (i = 1; i < arr.length; i++) {
+    for (j = 0; j < arr.length; j++) {
+      if (arr[i] < arr[j]) {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+    }
+  }
+  console.log(arr);
+};
+sortArray([100, 83, 32, 9, 45, 61]);
+
+/* Best solution :
+const sortArray = (arr) => console.log(arr.sort().reverse());
+console.log(sortArray([100, 83, 32, 9, 45, 61]));
+*/
+
+/*
+Given a sentence, your function should reverse the order of characters in each word, keeping same sequence of words.  
+**Example:**  
+**Input:** `reverseCharactersOfWord('we are neoGrammers')`
+**Output:** `ew era sremmarGoen`
+*/
+
+const reverseCharactersOfWord = (sentence) => {
+  //reverse the entire sentence
+  let reversedSentence = "";
+  for (let i = 0; i < sentence.length; i++) {
+    reversedSentence += sentence[sentence.length - i - 1];
+  }
+
+  //converting the string to array. Best method is to use split(" ") but doing this to understand what the split method does.
+  let arr = [],
+    str = "";
+  for (let j = 0; j < reversedSentence.length; j++) {
+    // here we are looping throught the characters of 'reversedSentence'
+    if (reversedSentence[j] === " ") {
+      //when we hit a space, we will push the 'str' to 'arr' and reset 'str' to empty string.
+      arr[arr.length] = str;
+      str = "";
+    } else {
+      str += reversedSentence[j]; //concatinating the characters to variable 'str' in the else stmt.
+    }
+  }
+  arr[arr.length] = str; //pushing the final 'str' as there will be no spaces after the last word in a sentence.
+
+  //reverse the order of words in the sentence
+  let i = 0;
+  let j = arr.length - 1;
+  while (i < j) {
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+    i++;
+    j--;
+  }
+
+  //changing the array back to sentence as it is the desired output.
+  let res = " ";
+  for (let words of arr) {
+    res += words + " ";
+  }
+  console.log(res)
+  //res.trim() - optional. This is used to trim the spaces at the beginning and ending of the string.
+};
+reverseCharactersOfWord("we are neoGrammers");
+
+/*Best approach : 
+const reverseCharactersOfWord = (s) => s.split(" ").map((item) => item.split("").reverse().join(""));
+console.log(reverseCharactersOfWord("we are neoGrammers"));
+*/
+
+//Solved the last two using very basic JS and no methods to understand how lengthy a solution can get.
